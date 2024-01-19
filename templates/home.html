@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jovian Careers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <div class="container">
+        <h1 class="text-center">{{company_name}}</h1>
+        <img class="img_fluid" id="banner" src="static/umfc_banner.jpg">
+        <h2>About Jovian</h2>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa massa. Eu mi bibendum neque egestas congue quisque egestas. Nisi quis eleifend quam adipiscing vitae proin sagittis. Enim neque volutpat ac tincidunt vitae semper. Aliquet enim tortor at auctor urna nunc id cursus. Senectus et netus et malesuada fames ac turpis egestas. Egestas erat imperdiet sed euismod nisi porta lorem. Sed sed risus pretium quam vulputate dignissim. Eget velit aliquet sagittis id. Proin fermentum leo vel orci porta non pulvinar neque laoreet. Nunc sed blandit libero volutpat sed cras ornare arcu. Quis lectus nulla at volutpat diam ut venenatis. Egestas quis ipsum suspendisse ultrices gravida. Sed id semper risus in hendrerit gravida rutrum. Lacus suspendisse faucibus interdum posuere. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.</p>
+
+        <h2 class="text-center mt-2 mb-4">Positions</h2>
+        <p>
+            {% for job in jobs %}
+                {%include 'jobitem.html' %}
+            {% endfor %}
+        </p>
+        <div class="text-center">
+            <button type="button" class="btn btn-outline-primary">Contact Us</button>
+            <p class="mt-4">Copyright 2022, Jovian</p>
+        </div>
+    </div>
+</body>
+
+</html>
