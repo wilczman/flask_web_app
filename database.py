@@ -23,4 +23,5 @@ if __name__ == '__main__':
         result = conn.execute(text("select * from jobs"))
         result_dicts = []
         for row in result.all():
-            result_dicts.append(dict(row))
+            print(row)
+            #result_dicts.append(dict(row))
