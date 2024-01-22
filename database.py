@@ -13,11 +13,12 @@ ssl = {
     "ssl": {"ssl_ca": "/etc/ssl/cert.pem"}
 }
 
+engine = create_engine(
+    uri,
+    connect_args=ssl
+)
+
 if __name__ == '__main__':
-    engine = create_engine(
-        uri,
-        connect_args=ssl
-    )
     with engine.connect() as conn:
         result = conn.execute(text("select * from jobs"))
         result_dicts = []
