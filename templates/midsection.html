@@ -1,0 +1,15 @@
+<div class="container">
+    <h1 class="text-center">{{company_name}}</h1>
+    <img class="img_fluid" id="banner" src="static/umfc_banner.jpg">
+    <h2>About Jovian</h2>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sed tempus urna et pharetra pharetra massa massa. Eu mi bibendum neque egestas congue quisque egestas. Nisi quis eleifend quam adipiscing vitae proin sagittis. Enim neque volutpat ac tincidunt vitae semper. Aliquet enim tortor at auctor urna nunc id cursus. Senectus et netus et malesuada fames ac turpis egestas. Egestas erat imperdiet sed euismod nisi porta lorem. Sed sed risus pretium quam vulputate dignissim. Eget velit aliquet sagittis id. Proin fermentum leo vel orci porta non pulvinar neque laoreet. Nunc sed blandit libero volutpat sed cras ornare arcu. Quis lectus nulla at volutpat diam ut venenatis. Egestas quis ipsum suspendisse ultrices gravida. Sed id semper risus in hendrerit gravida rutrum. Lacus suspendisse faucibus interdum posuere. Egestas sed tempus urna et pharetra pharetra massa massa ultricies.</p>
+    <h2 class="text-center mt-2 mb-4">Positions</h2>
+    <p>
+        {% for job in jobs %}
+            {%include 'jobitem.html' %}
+        {% endfor %}
+    </p>
+    <div class="text-center">
+        <button type="button" class="btn btn-outline-primary">Contact Us</button>
+    </div>
+</div>
