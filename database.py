@@ -22,6 +22,5 @@ if __name__ == '__main__':
     with engine.connect() as conn:
         result = conn.execute(text("select * from jobs"))
         result_dicts = []
-        for row in result.all():
-            print(row)
-            #result_dicts.append(dict(row))
+        for row in result.mappings().all():
+            print(dict(row))
