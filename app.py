@@ -1,17 +1,9 @@
-from flask import Flask, render_template, jsonify
-from sqlalchemy import text
+from flask import Flask, render_template, jsonify, request
 
-from database import engine
+from database import load_jobs_from_db, load_specific_job_from_db, add_application_to_db
 
 app = Flask(__name__)
 
-def load_jobs_from_db():
-    with engine.connect() as conn:
-        result = conn.execute(text("select * from jobs"))
-        result_dicts = []
-        for row in result.mappings().all():
-            result_dicts.append(dict(row))
-        return result_dicts
 
 @app.route('/')
 def hello_world():
@@ -27,17 +19,32 @@ def list_jobs():
     jobs = load_jobs_from_db()
     return jsonify(jobs)
 
-@app.route('/1/')
-def one():
-    return 'doopa!'
+@app.route('/jobs/<id>')
+def show_job(id):
+    job = load_specific_job_from_db(id)
+    if not job:
+        return "Not Found", 404
+    else:
+        return render_template(
+            'jobpage.html',
+            job=job
+        )
 
-@app.route('/2/')
-def two():
-    return 'doopa!'
+@app.route("/jobs/<id>/apply", methods=['post'])
+def apply_to_job(id):
+    data = request.form
+    job = load_specific_job_from_db(id)
+    add_application_to_db(id, data)
+    return render_template(
+        'application_submitted.html',
+        application=data
+    )
 
-@app.route('/3/')
-def three():
-    return 'doopa!'
+@app.route('/api/jobs/<id>')
+def api_show_job(id):
+    job = load_specific_job_from_db(id)
+    return jsonify(job)
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
