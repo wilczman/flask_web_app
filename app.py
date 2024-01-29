@@ -10,7 +10,7 @@ def hello_world():
     jobs = load_jobs_from_db()
     return render_template(
         'home.html',
-        company_name="Elegant Careers",
+        company_name="Dwa Smyczki",
         jobs=jobs,
     )
 
