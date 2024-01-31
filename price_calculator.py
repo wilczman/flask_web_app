@@ -5,7 +5,7 @@ import os
 
 load_dotenv()
 API_KEY = os.getenv("G_MAPS_API_KEY")
-TIME_PRICE = 100  # price per hour of riding per person
+TIME_PRICE = 80  # price per hour of riding per person
 FUEL_CONSUMPTION = 7  # per 100km
 POINT_BETWEEN_TWO_VIOLINS_COORDS = '52.151308, 21.098135'
 
@@ -36,9 +36,12 @@ def get_distance_time(place, postal_code):
 
 def calculate_price(place, postal_code):
   try:
+    # format to metry, sekundy
     dist, time = get_distance_time(place, postal_code)
+    dist += 30_000  # za podwożenie sie do domu
+    time += 1800 # 30 minut czasu na osobe na ogarnianie trasy do punktu środka
   except NotFoundError:
-    return 'Not found'
+    return 'Nie znaleziono takiej miejscowości!'
 
   dist_km = dist / 1000
   time_hours = time / 3600
