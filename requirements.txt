@@ -3,3 +3,4 @@ Gunicorn
 SQLAlchemy~=2.0.25
 PyMySql
 python-dotenv~=1.0.0
+googlemaps
