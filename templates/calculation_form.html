@@ -1,0 +1,19 @@
+<h4>Kalkulator kosztów dojazdu</h4>
+<form action="/cennik/oblicz" method="post">
+    <div>
+        <label>Miejscowość</label><br>
+        <input type="text" name="place" placeholder="Warszawa" required>
+    </div>
+
+    <div>
+        <label>Kod pocztowy</label><br>
+        <input type="text" pattern="^\d{2}-\d{3}$" name="postal_code" placeholder="12-345" required>
+    </div>
+
+    <div>
+        <input type="submit">
+    </div>
+
+    <h4>Szacowany koszt dojazdu to: {{calculation}}</h4>
+
+</form>
