@@ -35,22 +35,23 @@ def get_distance_time(place, postal_code):
     return dist, time
 
 def calculate_price(place, postal_code):
-  try:
-    # format to metry, sekundy
-    dist, time = get_distance_time(place, postal_code)
-    dist += 30_000  # za podwożenie sie do domu
-    time += 1800 # 30 minut czasu na osobe na ogarnianie trasy do punktu środka
-  except NotFoundError:
-    return 'Nie znaleziono takiej miejscowości!'
+  pass
+  # try:
+  #   # format to metry, sekundy
+  #   dist, time = get_distance_time(place, postal_code)
+  #   dist += 30_000  # za podwożenie sie do domu
+  #   time += 1800 # 30 minut czasu na osobe na ogarnianie trasy do punktu środka
+  # except NotFoundError:
+  #   return 'Nie znaleziono takiej miejscowości!'
 
-  dist_km = dist / 1000
-  time_hours = time / 3600
-  total_time_price = 2 * time_hours * TIME_PRICE
-  petrol_price_per_liter = get_petrol_price_per_liter()
-  total_petrol_price = 2 * dist_km / 100 * FUEL_CONSUMPTION * petrol_price_per_liter
-  # return f"time price {total_time_price} fuel price {total_petrol_price}"
-  total_price = total_petrol_price + total_time_price
-  return f"{total_price:.2f}".replace('.', ',')
+  # dist_km = dist / 1000
+  # time_hours = time / 3600
+  # total_time_price = 2 * time_hours * TIME_PRICE
+  # petrol_price_per_liter = get_petrol_price_per_liter()
+  # total_petrol_price = 2 * dist_km / 100 * FUEL_CONSUMPTION * petrol_price_per_liter
+  # # return f"time price {total_time_price} fuel price {total_petrol_price}"
+  # total_price = total_petrol_price + total_time_price
+  # return f"{total_price:.2f}".replace('.', ',')
 
 def get_petrol_price_per_liter():
   # TODO!!!
